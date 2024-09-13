@@ -26,7 +26,7 @@
             Algoritme reemplaçament:
         
         Main Memory
-            Amplada de banda:
+            Amplada de banda: 76.8 GB/s
             Latència:
 
         Numero ALUs i multiplicació d'Integers:
