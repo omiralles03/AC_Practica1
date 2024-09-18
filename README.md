@@ -46,31 +46,33 @@
 
     -AMD Ryzen 5 7600X (Zen 4 core)
         Quantitat d'instruccions per cicle a tractar
-                FETCH:
-                DECODE:
-                ISSUE:
-                COMMIT:
+                FETCH: 8
+                DECODE: 6
+                ISSUE: 10 ints 6 floats
+                COMMIT: 320
 
             Mida Buffers emmagatzenament d'instruccions
                 RUU:
-                LSQ:
+                LSQ: 88
             
             Caché L1
-                Manipulació separada inst y dades:
-                Mida:
-                Associativitat:
+                Manipulació separada inst y dades: si
+                Mida: 32KB/Core
+                Associativitat: 8-way
                 Algoritme reemplaçament:
 
             Caché L2
-                Manipulació separada inst y dades:
-                Mida:
-                Associativitat:
+                Manipulació separada inst y dades: si
+                Mida: 1024KB/Core
+                Associativitat: 8-way
                 Algoritme reemplaçament:
             
             Main Memory
-                Amplada de banda:
+                Amplada de banda: 83.2GB/s
                 Latència:
 
-            Numero ALUs i multiplicació d'Integers:
-            Numero ALUs i multiplicació coma flotant:
+            Numero ALUs i multiplicació d'Integers: ? - 10 ints
+            Numero ALUs i multiplicació coma flotant: ? - 6 floats
             Numero ports accés a memòria Caché L1:
+
+https://www.anandtech.com/show/17585/amd-zen-4-ryzen-9-7950x-and-ryzen-5-7600x-review-retaking-the-high-end/8
