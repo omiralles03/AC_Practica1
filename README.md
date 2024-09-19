@@ -77,5 +77,10 @@
 
 https://www.anandtech.com/show/17585/amd-zen-4-ryzen-9-7950x-and-ryzen-5-7600x-review-retaking-the-high-end/8
 https://azrael.digipen.edu/~mmead/www/docs/IntroToIntelArch-TheBasics.pdf
+https://www.elprocus.com/superscalar-processor/
+https://www.inf.ed.ac.uk/teaching/courses/pa/Notes/lecture03-superscalars.pdf
+https://www.cpuid.com/softwares/cpu-z.html
+https://www.custompc.com/intel/core-i5-14400f-guide
+
 
 RUU (register update unit) = ROB (reorder buffer)
