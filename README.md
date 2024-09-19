@@ -81,6 +81,7 @@ https://www.elprocus.com/superscalar-processor/
 https://www.inf.ed.ac.uk/teaching/courses/pa/Notes/lecture03-superscalars.pdf
 https://www.cpuid.com/softwares/cpu-z.html
 https://www.custompc.com/intel/core-i5-14400f-guide
+https://www.google.com/search?q=deep+explanation+in+intel+architecture&rlz=1C5CHFA_enES1115ES1115&oq=deep+explanation+in+intel+architec&gs_lcrp=EgZjaHJvbWUqCQgBECEYChigATIGCAAQRRg5MgkIARAhGAoYoAEyCQgCECEYChigATIJCAMQIRgKGKABMgcIBBAhGJ8FMgcIBRAhGJ8FMgcIBhAhGJ8F0gEJMTM4MTVqMWo0qAIAsAIA&sourceid=chrome&ie=UTF-8
 
 
 RUU (register update unit) = ROB (reorder buffer)
