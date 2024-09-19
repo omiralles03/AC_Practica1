@@ -53,7 +53,7 @@
 
             Mida Buffers emmagatzenament d'instruccions
                 RUU: 320 instruccions
-                LSQ: 88
+                LSQ: 88 instruccions
             
             Caché L1
                 Manipulació separada inst y dades: si
