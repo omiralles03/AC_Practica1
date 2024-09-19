@@ -49,10 +49,10 @@
                 FETCH: 8
                 DECODE: 6
                 ISSUE: 10 ints 6 floats
-                COMMIT: 320
+                COMMIT: 
 
             Mida Buffers emmagatzenament d'instruccions
-                RUU:
+                RUU: 320 instruccions
                 LSQ: 88
             
             Caché L1
@@ -76,3 +76,6 @@
             Numero ports accés a memòria Caché L1:
 
 https://www.anandtech.com/show/17585/amd-zen-4-ryzen-9-7950x-and-ryzen-5-7600x-review-retaking-the-high-end/8
+https://azrael.digipen.edu/~mmead/www/docs/IntroToIntelArch-TheBasics.pdf
+
+RUU (register update unit) = ROB (reorder buffer)
