@@ -5,10 +5,10 @@
     - Intel Core i5-14400 (Lackluster core)
         Quantitat d'instruccions per cicle a tractar per cada etapa (IPC - k-via = 6)            
             (no se da la información, pero como CPU tipo Raptor-Lake, se supone 6 instrucciones en cada etapa)
-            FETCH:
-            DECODE:
-            ISSUE:
-            COMMIT:
+            FETCH: 6
+            DECODE: 4
+            ISSUE: 6 (4 Integers & 2 Floats)
+            COMMIT: 6
 
         Mida Buffers emmagatzenament d'instruccions
             RUU: 320 instruccions
