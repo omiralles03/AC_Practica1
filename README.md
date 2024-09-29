@@ -6,15 +6,18 @@
         Quantitat d'instruccions per cicle a tractar per cada etapa (IPC - k-via = 6)            
             (no se da la información, pero como CPU tipo Raptor-Lake, se supone 6 instrucciones en cada etapa)
             FETCH: 6
-            DECODE: 4
+            DECODE: 6 (6 decoder)
             ISSUE: 6 (4 Integers & 2 Floats)
             COMMIT: 6
 
-        Mida Buffers emmagatzenament d'instruccions
-            RUU: 320 instruccions
-            LSQ: 72 instruccions
+            k-via: 6
 
-        Caché L1
+        Mida Buffers emmagatzenament d'instruccions
+            RUU: 512
+            LSQ: 192
+
+        USAR P core.
+        Caché L1 80KB (32KB + 48KB P cores)
             Manipulació separada inst y dades: SI
             L1I Mida: 32KB/Core P-Core (Performance Core)
                       64KB/Core E-Core (Efficiency Core)    
@@ -28,20 +31,22 @@
 
         Caché L2
             Manipulació separada inst y dades: NO
-            Mida: 1280 KB/Core P-Core (Performance Core)
+            Mida: 1280 KB/Core P-Core (Performance Core) (1.25MB)
                   2MB Compartida E-Core (Efficiency Core)
             Associativitat: 10 per P-Core. 16 per E-Core
             Algoritme reemplaçament: LRU (Lease Recently Used)
         
         Cores: 10 cores. 6 P-Cores y 4 E-Cores.
+        sets 64.
 
         Main Memory
-            Amplada de banda: 76.8 GB/s
+            Amplada de banda: 76.8 GB/s - (16B / ciclo)
             Latència: 4800 MT/s (DDR5)
+        CAS latency (PC componentes)
 
-        Numero ALUs i multiplicació d'Integers: 4 (P-core) y 2 (E-core)
-        Numero ALUs i multiplicació coma flotant: 2 (P-core) y 1 (E-core)
-        Numero ports accés a memòria Caché L1: 2 ports (load). 1 port (store)
+        Numero ALUs i multiplicació d'Integers: 4 (P-core) y 2 (E-core) - (5-1)
+        Numero ALUs i multiplicació coma flotant: 2 (P-core) y 1 (E-core) - (2-2)
+        Numero ports accés a memòria Caché L1: 2 ports (load). 1 port (store) - (6)
         
 
 
@@ -54,7 +59,7 @@
 
             Mida Buffers emmagatzenament d'instruccions
                 RUU: 320 instruccions
-                LSQ: 88 instruccions
+                LSQ: 136 instructions entry
             
             Caché L1
                 Manipulació separada inst y dades: SI
@@ -75,11 +80,11 @@
             Cores: 6 cores.
 
             Main Memory
-                Amplada de banda: 83.2GB/s
+                Amplada de banda: 83.2GB/s - (!
                 Latència: 5200 MT/s (DDR5)
 
-            Numero ALUs i multiplicació d'Integers: 4 (256 bits cadascuna)
-            Numero ALUs i multiplicació coma flotant: 2 (256 bits cadascuna)
+            Numero ALUs i multiplicació d'Integers: 4 y 1
+            Numero ALUs i multiplicació coma flotant: 2 y 2
             Numero ports accés a memòria Caché L1: 2 ports (load). 1 port (store)
 
 FONTS:
