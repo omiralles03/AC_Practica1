@@ -33,7 +33,7 @@
             Manipulació separada inst y dades: NO
             Mida: 1280 KB/Core P-Core (Performance Core) (1.25MB)
                   2MB Compartida E-Core (Efficiency Core)
-            Associativitat: 10 per P-Core. 16 per E-Core
+            Associativitat: 10 per P-Core. 16 per E-Core -( 16vias)
             Algoritme reemplaçament: LRU (Lease Recently Used)
         
         Cores: 10 cores. 6 P-Cores y 4 E-Cores.
