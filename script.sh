@@ -118,6 +118,10 @@ execute_simulation() {
 -cache:dl2 ul2:${INT_UL2_SETS}:${INT_UL2_BSIZE}:${INT_DL2_ASOC}:l -cache:dl2lat $INT_DL2LAT \
 -redir:sim $OUTPUT_DIR $EXE $COMMAND"
 
+    echo "Executing simulation for $BENCH (INTEL):"
+    echo "$SIM_COMMAND"
+    eval $SIM_COMMAND
+
 
     local OUTPUT_DIR="$BASE_DIR/Results/ResultsAMD_${BENCH}.txt"
     # Construir la línea de comandos para sim-outorder
@@ -128,7 +132,7 @@ execute_simulation() {
 -cache:dl1 dl1:${AMD_DL1_SETS}:${AMD_DL1_BSIZE}:${AMD_DL1_ASOC}:l -cache:dl1lat $AMD_DL1LAT \
 -cache:dl2 ul2:${AMD_UL2_SETS}:${AMD_UL2_BSIZE}:${AMD_DL2_ASOC}:l -cache:dl2lat $AMD_DL2LAT \
 -redir:sim $OUTPUT_DIR $EXE $COMMAND"
-    echo "Executing simulation for $BENCH:"
+    echo "Executing simulation for $BENCH (AMD):"
     echo "$SIM_COMMAND"
     eval $SIM_COMMAND
 
