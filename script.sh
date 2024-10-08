@@ -38,10 +38,14 @@ INT_DL1_BSIZE=64 # Bytes
 INT_UL2_SIZE=1280 # KB
 INT_UL2_BSIZE=64  # Bytes
 
-INT_FIRST_CHUNK=67
+INT_FIRST_CHUNK=156
 INT_INTER_CHUNK=1
-INT_MEM_WIDTH=8
+INT_MEM_WIDTH=16
 
+INT_ALUI=4
+INT_ALUF=2
+INT_MULTI=2
+INT_MULTF=1
 
 # Parámetros de ejecución del procesador (basados en AMD Ryzen 5 7600X)
 AMD_FETCH_IFQSIZE=6
@@ -71,9 +75,14 @@ AMD_DL1_BSIZE=64 # Bytes
 AMD_UL2_SIZE=1024 # KB
 AMD_UL2_BSIZE=64  # Bytes
 
-AMD_FIRST_CHUNK=75
+AMD_FIRST_CHUNK=165
 AMD_INTER_CHUNK=1
-AMD_MEM_WIDTH=8
+AMD_MEM_WIDTH=16
+
+AMD_ALUI=4
+AMD_ALUF=2
+AMD_MULTI=1
+AMD_MULTF=2
 
 # Función para calcular el número más cercano que sea potencia de 2
 nearsest_power2() {
@@ -125,6 +134,8 @@ execute_simulation() {
 -cache:dl1 dl1:${INT_DL1_SETS}:${INT_DL1_BSIZE}:${INT_DL1_ASOC}:l -cache:dl1lat $INT_DL1LAT \
 -cache:dl2 ul2:${INT_UL2_SETS}:${INT_UL2_BSIZE}:${INT_DL2_ASOC}:l -cache:dl2lat $INT_DL2LAT \
 -mem:lat $INT_FIRST_CHUNK $INT_INTER_CHUNK -mem:width $INT_MEM_WIDTH \
+-res:ialu $INT_ALUI -res:fpalu $INT_ALUF \
+-res:imult $INT_MULTI -res:fpmult $INT_MULTF \
 -redir:sim $OUTPUT_DIR $EXE $COMMAND"
 
     echo "Executing simulation for $BENCH (INTEL):"
@@ -141,6 +152,8 @@ execute_simulation() {
 -cache:dl1 dl1:${AMD_DL1_SETS}:${AMD_DL1_BSIZE}:${AMD_DL1_ASOC}:l -cache:dl1lat $AMD_DL1LAT \
 -cache:dl2 ul2:${AMD_UL2_SETS}:${AMD_UL2_BSIZE}:${AMD_DL2_ASOC}:l -cache:dl2lat $AMD_DL2LAT \
 -mem:lat $AMD_FIRST_CHUNK $AMD_INTER_CHUNK -mem:width $AMD_MEM_WIDTH \
+-res:ialu $AMD_ALUI -res:fpalu $AMD_ALUF \
+-res:imult $AMD_MULTI -res:fpmult $AMD_MULTF \
 -redir:sim $OUTPUT_DIR $EXE $COMMAND"
     
     echo "Executing simulation for $BENCH (AMD):"
