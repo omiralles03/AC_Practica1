@@ -1,5 +1,8 @@
 # AC_Practica1
 
+  ```plaintext
+  fix: resolve merge conflicts in <specific files or feature>
+  ```
 -- SPECS --
 
     - Intel Core i5-14400 (Lackluster core)
