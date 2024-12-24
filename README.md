@@ -1,5 +1,5 @@
 # AC_Practica1
-
+[![codecov](https://codecov.io/gh/omiralles03/AC_Practica1/branch/main/graph/badge.svg)](https://codecov.io/gh/omiralles03/AC_Practica1)
   ```plaintext
   fix: resolve merge conflicts in <specific files or feature>
   ```
