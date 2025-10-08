@@ -11,77 +11,77 @@ FASTFWD=100000000
 MAX_INST=100000000
 
 # Parámetros de ejecución del procesador (basados en Intel Core i5-14400)
-INT_FETCH_IFQSIZE=6
-INT_DECODE_WIDTH=6
-INT_ISSUE_WIDTH=6
-INT_COMMIT_WIDTH=6
-INT_RUU_SIZE=512
-INT_LSQ_SIZE=256 #192
+INT_FETCH_IFQSIZE=8
+INT_DECODE_WIDTH=8
+INT_ISSUE_WIDTH=8
+INT_COMMIT_WIDTH=12
+INT_RUU_SIZE=512 #576
+INT_LSQ_SIZE=256 #309
 
 # Configuración de latencias para cachés
-INT_IL2LAT=12
-INT_DL2LAT=12
-INT_IL1LAT=4
+INT_IL2LAT=23
+INT_DL2LAT=23
+INT_IL1LAT=11
 INT_DL1LAT=4
 
 # Configuración de cachés L1 y L2
 INT_IL1_ASOC=8
-INT_DL1_ASOC=16
-INT_DL2_ASOC=8
+INT_DL1_ASOC=8 #12
+INT_DL2_ASOC=8 #10
 
-INT_IL1_SIZE=32  # KB
+INT_IL1_SIZE=64  # KB
 INT_IL1_BSIZE=64 # Bytes
 
 INT_DL1_SIZE=48  # KB
 INT_DL1_BSIZE=64 # Bytes
 
-INT_UL2_SIZE=1280 # KB
+INT_UL2_SIZE=3072 # KB
 INT_UL2_BSIZE=64  # Bytes
 
-INT_FIRST_CHUNK=156
+INT_FIRST_CHUNK=125
 INT_INTER_CHUNK=1
 INT_MEM_WIDTH=16
 
-INT_ALUI=4
-INT_ALUF=2
-INT_MULTI=2
-INT_MULTF=1
+INT_ALUI=6
+INT_ALUF=8
+INT_MULTI=3
+INT_MULTF=2
 
 # Parámetros de ejecución del procesador (basados en AMD Ryzen 5 7600X)
-AMD_FETCH_IFQSIZE=6
-AMD_DECODE_WIDTH=4
-AMD_ISSUE_WIDTH=6
-AMD_COMMIT_WIDTH=6
-AMD_RUU_SIZE=256 #320
-AMD_LSQ_SIZE=128 #136
+AMD_FETCH_IFQSIZE=8
+AMD_DECODE_WIDTH=8
+AMD_ISSUE_WIDTH=8
+AMD_COMMIT_WIDTH=8
+AMD_RUU_SIZE=512 #448
+AMD_LSQ_SIZE=256 #306
 
 # Configuración de latencias para cachés
-AMD_IL2LAT=4
-AMD_DL2LAT=4
-AMD_IL1LAT=1
-AMD_DL1LAT=1
+AMD_IL2LAT=14
+AMD_DL2LAT=14
+AMD_IL1LAT=4
+AMD_DL1LAT=4
 
 # Configuración de cachés L1 y L2
 AMD_IL1_ASOC=8
-AMD_DL1_ASOC=8
-AMD_DL2_ASOC=8
+AMD_DL1_ASOC=8 #12
+AMD_DL2_ASOC=16
 
 AMD_IL1_SIZE=32  # KB
 AMD_IL1_BSIZE=64 # Bytes
 
-AMD_DL1_SIZE=32  # KB
+AMD_DL1_SIZE=48  # KB
 AMD_DL1_BSIZE=64 # Bytes
 
 AMD_UL2_SIZE=1024 # KB
 AMD_UL2_BSIZE=64  # Bytes
 
-AMD_FIRST_CHUNK=165
+AMD_FIRST_CHUNK=124
 AMD_INTER_CHUNK=1
 AMD_MEM_WIDTH=16
 
-AMD_ALUI=4
-AMD_ALUF=2
-AMD_MULTI=1
+AMD_ALUI=6
+AMD_ALUF=4
+AMD_MULTI=3
 AMD_MULTF=2
 
 # Función para calcular el número más cercano que sea potencia de 2
@@ -108,11 +108,17 @@ start_time=$(date +%s)
 
 # Benchmarks y sus comandos específicos
 declare -A BENCHMARKS
-BENCHMARKS["ammp"]="ammp < ammp.in > ammp.out 2> ammp.err"
-BENCHMARKS["applu"]="applu < applu.in > applu.out 2> applu.err"
-BENCHMARKS["eon"]="chair.control.rushmeier chair.camera chair.surfaces chair.rushmeier.ppm ppm pixels_out.rushmeier > rushmeier_log.out 2> rushmeier_log.err"
-BENCHMARKS["equake"]="equake < inp.in > inp.out 2> inp.err"
-BENCHMARKS["vpr"]="net.in arch.in place.out dum.out -nodisp -place_only -init_t 5 -exit_t 0.005 -alpha_t 0.9412 -inner_num 2 > place_log.out 2> place_log.err"
+BENCHMARKS["applu"]="< applu.in > applu.out 2> applu.err"
+BENCHMARKS["art"]="-scanfile c756hel.in -trainfile1 a10.img -trainfile2 hc.img -stride 2 -startx 110 -starty 200 -endx 160 -endy 240 -objects 10 > ref.1.out 2> ref.1.err
+-scanfile c756hel.in -trainfile1 a10.img -trainfile2 hc.img -stride 2 -startx 470 -starty 140 -endx 520 -endy 180 -objects 10 > ref.2.out 2> ref.2.err"
+BENCHMARKS["gzip"]="input.source 60 > input.source.out 2> input.source.err
+input.log 60 > input.log.out 2> input.log.err
+input.graphic 60 > input.graphic.out 2> input.graphic.err
+input.graphic 60 > input.graphic.out 2> input.graphic.err
+input.random 60 > input.random.out 2> input.random.err
+input.program 60 > input.program.out 2> input.program.err"
+BENCHMARKS["mesa"]="-frames 1000 -meshfile mesa.in -ppmfile mesa.ppm"
+BENCHMARKS["twolf"]="ref > ref.stdout 2> ref.err"
 
 # Función para ejecutar una simulación
 execute_simulation() {
