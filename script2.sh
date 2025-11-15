@@ -5,6 +5,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Ruta al simulador
 SIMULATOR="$BASE_DIR/simplesim-3.0_ecx/sim-outorder"
+SIMULATOR2="$BASE_DIR/simplesim-3.0_ecx/sim-bpred"
 
 # Parámetros comunes
 FASTFWD=100000000
@@ -108,8 +109,10 @@ execute_simulation_static() {
         #local OUTPUT_DIR="${OUTPUT_DIR_BASE}/ResultsStatic_${BENCH}_${PRED}.txt"
         local OUTPUT_DIR="$BASE_DIR/Results/ResultsStatic_${BENCH}_${PRED}.txt"
         # Construir la linea de comandos para sim-outorder con el predictor
-        local SIM_COMMAND="$SIMULATOR -fastfwd $FASTFWD -max:inst $MAX_INST \
-	-mem:width $WIDTH -mem:lat $CYCLES $CONSECUTIVE \
+	#        local SIM_COMMAND="$SIMULATOR -fastfwd $FASTFWD -max:inst $MAX_INST \
+	# -mem:width $WIDTH -mem:lat $CYCLES $CONSECUTIVE \
+	# -bpred $PRED -redir:sim $OUTPUT_DIR $EXE $COMMAND"
+        local SIM_COMMAND="$SIMULATOR2 -fastfwd $FASTFWD -max:inst $MAX_INST \
 	-bpred $PRED -redir:sim $OUTPUT_DIR $EXE $COMMAND"
 
         echo -e "\nExecuting simulation for $BENCH (Static Predictor: $PRED):"
@@ -200,8 +203,8 @@ execute_simulation_dynamic() {
 
 # Ejecutar simulaciones para todos los benchmarks con predictores dinámicos
 for BENCH in "${!BENCHMARKS[@]}"; do
-    execute_simulation_dynamic "$BENCH"
-    # execute_simulation_static "$BENCH"
+    # execute_simulation_dynamic "$BENCH"
+    execute_simulation_static "$BENCH"
 done
 
 # Ejecutar simulaciones para todos los benchmarks
