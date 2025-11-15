@@ -8,7 +8,7 @@ of SimpleScalar, LLC (info@simplescalar.com).
 warning: section `.comment' ignored...
 sim: command line: /home/milax/Escriptori/AC_Practica1/simplesim-3.0_ecx/sim-bpred -fastfwd 100000000 -max:inst 100000000 -bpred nottaken -redir:sim /home/milax/Escriptori/AC_Practica1/Results/ResultsStatic_twolf_nottaken.txt /home/milax/Escriptori/AC_Practica1/Benchmarks/twolf/exe/twolf.exe ref 
 
-sim: simulation started @ Sat Nov 15 19:43:45 2025, options follow:
+sim: simulation started @ Sat Nov 15 19:59:12 2025, options follow:
 
 sim-bpred: This simulator implements a branch predictor analyzer.
 

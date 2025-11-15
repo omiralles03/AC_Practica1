@@ -15,7 +15,8 @@ CYCLES=300
 CONSECUTIVE=2
 
 # Archivo de salida consolidado
-CONSOLIDATED_OUTPUT="$BASE_DIR/Results/Consolidated_Results.txt"
+CONSOLIDATED_OUTPUT="$BASE_DIR/Results/Dynamic_Results.txt"
+CONSOLIDATED_OUTPUT2="$BASE_DIR/Results/Static_Results.txt"
 
 # Obtener el tiempo de inicio
 start_time=$(date +%s)
@@ -86,9 +87,9 @@ extract_results() {
     fi
 
     # Agregar los resultados al archivo consolidado con información del benchmark, predictor y configuración
-    echo -e "\nBenchmark: $bench, Predictor: $predictor, Config: $config" >> "$CONSOLIDATED_OUTPUT"
-    echo "$ipc" >> "$CONSOLIDATED_OUTPUT"
-    echo "$dir_rate" >> "$CONSOLIDATED_OUTPUT"
+    echo -e "\nBenchmark: $bench, Predictor: $predictor, Config: $config" >> "$CONSOLIDATED_OUTPUT2"
+    echo "$ipc" >> "$CONSOLIDATED_OUTPUT2"
+    echo "$dir_rate" >> "$CONSOLIDATED_OUTPUT2"
 }
 
 # Función para ejecutar una simulación de (T, NT y PERFECT)
@@ -118,6 +119,7 @@ execute_simulation_static() {
         echo -e "\nExecuting simulation for $BENCH (Static Predictor: $PRED):"
         echo "$SIM_COMMAND"
         eval $SIM_COMMAND
+        timer
         
         # Extraer y consolidar los resultados
         extract_results "$OUTPUT_DIR" "$BENCH" "$PRED" "N/A"

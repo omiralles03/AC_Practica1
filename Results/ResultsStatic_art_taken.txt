@@ -8,7 +8,7 @@ of SimpleScalar, LLC (info@simplescalar.com).
 warning: section `.comment' ignored...
 sim: command line: /home/milax/Escriptori/AC_Practica1/simplesim-3.0_ecx/sim-bpred -fastfwd 100000000 -max:inst 100000000 -bpred taken -redir:sim /home/milax/Escriptori/AC_Practica1/Results/ResultsStatic_art_taken.txt /home/milax/Escriptori/AC_Practica1/Benchmarks/art/exe/art.exe -scanfile c756hel.in -trainfile1 a10.img -trainfile2 hc.img -stride 2 -startx 110 -starty 200 -endx 160 -endy 240 -objects 10 -scanfile c756hel.in -trainfile1 a10.img -trainfile2 hc.img -stride 2 -startx 470 -starty 140 -endx 520 -endy 180 -objects 10 
 
-sim: simulation started @ Sat Nov 15 19:43:54 2025, options follow:
+sim: simulation started @ Sat Nov 15 19:59:21 2025, options follow:
 
 sim-bpred: This simulator implements a branch predictor analyzer.
 
