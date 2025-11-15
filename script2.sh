@@ -15,8 +15,7 @@ CYCLES=300
 CONSECUTIVE=2
 
 # Archivo de salida consolidado
-CONSOLIDATED_OUTPUT="$BASE_DIR/Results/Dynamic_Results.txt"
-CONSOLIDATED_OUTPUT2="$BASE_DIR/Results/Static_Results.txt"
+CONSOLIDATED_OUTPUT="$BASE_DIR/Results/ALL_Results.txt"
 
 # Obtener el tiempo de inicio
 start_time=$(date +%s)
@@ -87,9 +86,9 @@ extract_results() {
     fi
 
     # Agregar los resultados al archivo consolidado con información del benchmark, predictor y configuración
-    echo -e "\nBenchmark: $bench, Predictor: $predictor, Config: $config" >> "$CONSOLIDATED_OUTPUT2"
-    echo "$ipc" >> "$CONSOLIDATED_OUTPUT2"
-    echo "$dir_rate" >> "$CONSOLIDATED_OUTPUT2"
+    echo -e "\nBenchmark: $bench, Predictor: $predictor, Config: $config" >> "$CONSOLIDATED_OUTPUT"
+    echo "$ipc" >> "$CONSOLIDATED_OUTPUT"
+    echo "$dir_rate" >> "$CONSOLIDATED_OUTPUT"
 }
 
 # Función para ejecutar una simulación de (T, NT y PERFECT)
@@ -143,8 +142,8 @@ execute_simulation_dynamic() {
     local OUTPUT_DIR_BASE="$BASE_DIR/Results"
 
     # Simulación para cada predictor dinámico con sus configuraciones específicas
-    # for PRED in "bimodal" "2lev_gshare" "2lev_gag" "2lev_pag"; do
-    for PRED in "2lev_gshare" "2lev_gag" "2lev_pag"; do
+    for PRED in "bimodal" "2lev_gshare" "2lev_gag" "2lev_pag"; do
+    # for PRED in "2lev_gshare" "2lev_gag" "2lev_pag"; do
         local CONFIG_VALUES="${CONFIGURATIONS[$PRED]}"
 
         for CONFIG in $CONFIG_VALUES; do
@@ -152,11 +151,11 @@ execute_simulation_dynamic() {
             
             # Construir la línea de comandos de acuerdo al tipo de predictor y configuración
             case $PRED in
-                # "bimodal")
-                #     local SIM_COMMAND="$SIMULATOR -fastfwd $FASTFWD -max:inst $MAX_INST \
-                #     -mem:width $WIDTH -mem:lat $CYCLES $CONSECUTIVE \
-                #     -bpred bimod -bpred:bimod $CONFIG -redir:sim $OUTPUT_DIR $EXE $COMMAND"
-                #     ;;
+                "bimodal")
+                    local SIM_COMMAND="$SIMULATOR -fastfwd $FASTFWD -max:inst $MAX_INST \
+                    -mem:width $WIDTH -mem:lat $CYCLES $CONSECUTIVE \
+                    -bpred bimod -bpred:bimod $CONFIG -redir:sim $OUTPUT_DIR $EXE $COMMAND"
+                    ;;
                 "2lev_gshare")
                     LOG2X=$(echo "l($CONFIG)/l(2)" | bc -l | awk '{print int($1)}')
                     if [ "$LOG2X" -lt 1 ]; then
@@ -203,10 +202,11 @@ execute_simulation_dynamic() {
 }
 
 
-# Ejecutar simulaciones para todos los benchmarks con predictores dinámicos
 for BENCH in "${!BENCHMARKS[@]}"; do
-    # execute_simulation_dynamic "$BENCH"
     execute_simulation_static "$BENCH"
+done
+for BENCH in "${!BENCHMARKS[@]}"; do
+    execute_simulation_dynamic "$BENCH"
 done
 
 # Ejecutar simulaciones para todos los benchmarks
