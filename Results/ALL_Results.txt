@@ -1,0 +1,520 @@
+
+Benchmark: twolf, Predictor: nottaken, Config: N/A
+
+bpred_nottaken.bpred_dir_rate    0.6961 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: taken, Config: N/A
+
+bpred_taken.bpred_dir_rate    0.6842 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: perfect, Config: N/A
+
+bpred_dir_rate: 1.0000 (Perfect Predictor)
+
+Benchmark: art, Predictor: nottaken, Config: N/A
+
+bpred_nottaken.bpred_dir_rate    0.1066 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: taken, Config: N/A
+
+bpred_taken.bpred_dir_rate    0.8934 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: perfect, Config: N/A
+
+bpred_dir_rate: 1.0000 (Perfect Predictor)
+
+Benchmark: applu, Predictor: nottaken, Config: N/A
+
+bpred_nottaken.bpred_dir_rate    0.1580 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: taken, Config: N/A
+
+bpred_taken.bpred_dir_rate    0.8420 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: perfect, Config: N/A
+
+bpred_dir_rate: 1.0000 (Perfect Predictor)
+
+Benchmark: gzip, Predictor: nottaken, Config: N/A
+
+bpred_nottaken.bpred_dir_rate    0.4705 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: taken, Config: N/A
+
+bpred_taken.bpred_dir_rate    0.7432 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: perfect, Config: N/A
+
+bpred_dir_rate: 1.0000 (Perfect Predictor)
+
+Benchmark: mesa, Predictor: nottaken, Config: N/A
+
+bpred_nottaken.bpred_dir_rate    0.6662 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: taken, Config: N/A
+
+bpred_taken.bpred_dir_rate    0.6996 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: perfect, Config: N/A
+
+bpred_dir_rate: 1.0000 (Perfect Predictor)
+
+Benchmark: twolf, Predictor: bimodal, Config: 8
+sim_IPC                      1.5718 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.7508 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: bimodal, Config: 32
+sim_IPC                      1.7469 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8466 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: bimodal, Config: 128
+sim_IPC                      1.8704 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9119 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: bimodal, Config: 512
+sim_IPC                      2.0403 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9611 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: bimodal, Config: 2048
+sim_IPC                      2.0747 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9704 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gshare, Config: 1
+sim_IPC                      1.3891 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.6775 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gshare, Config: 8
+sim_IPC                      1.4431 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7019 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gshare, Config: 32
+sim_IPC                      1.5735 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7672 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gshare, Config: 128
+sim_IPC                      1.7305 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8448 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gshare, Config: 512
+sim_IPC                      1.9599 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9296 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gshare, Config: 2048
+sim_IPC                      2.0950 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9701 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gag, Config: 1
+sim_IPC                      1.3891 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.6775 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gag, Config: 8
+sim_IPC                      1.5564 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7617 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gag, Config: 32
+sim_IPC                      1.5788 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7598 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gag, Config: 128
+sim_IPC                      1.6337 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8041 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gag, Config: 512
+sim_IPC                      1.6567 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8270 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_gag, Config: 2048
+sim_IPC                      1.6763 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8356 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_pag, Config: 4-4
+sim_IPC                      1.4700 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7161 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_pag, Config: 8-16
+sim_IPC                      1.4999 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7275 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_pag, Config: 16-64
+sim_IPC                      1.6603 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8070 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_pag, Config: 32-256
+sim_IPC                      1.8273 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8861 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_pag, Config: 64-1024
+sim_IPC                      1.9171 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9167 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: twolf, Predictor: 2lev_pag, Config: 32-2048
+sim_IPC                      1.9358 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9219 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: bimodal, Config: 8
+sim_IPC                      0.0759 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9477 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: bimodal, Config: 32
+sim_IPC                      0.0759 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9515 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: bimodal, Config: 128
+sim_IPC                      0.0759 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9516 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: bimodal, Config: 512
+sim_IPC                      0.0759 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9516 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: bimodal, Config: 2048
+sim_IPC                      0.0759 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9516 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gshare, Config: 1
+sim_IPC                      0.0756 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7788 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gshare, Config: 8
+sim_IPC                      0.0758 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9275 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gshare, Config: 32
+sim_IPC                      0.0758 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9423 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gshare, Config: 128
+sim_IPC                      0.0761 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9825 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gshare, Config: 512
+sim_IPC                      0.0761 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9940 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gshare, Config: 2048
+sim_IPC                      0.0761 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9941 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gag, Config: 1
+sim_IPC                      0.0756 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7788 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gag, Config: 8
+sim_IPC                      0.0758 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8963 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gag, Config: 32
+sim_IPC                      0.0758 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8909 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gag, Config: 128
+sim_IPC                      0.0759 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9030 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gag, Config: 512
+sim_IPC                      0.0760 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9163 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_gag, Config: 2048
+sim_IPC                      0.0760 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9368 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_pag, Config: 4-4
+sim_IPC                      0.0758 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9173 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_pag, Config: 8-16
+sim_IPC                      0.0759 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9500 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_pag, Config: 16-64
+sim_IPC                      0.0759 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9488 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_pag, Config: 32-256
+sim_IPC                      0.0759 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9460 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_pag, Config: 64-1024
+sim_IPC                      0.0761 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9940 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: art, Predictor: 2lev_pag, Config: 32-2048
+sim_IPC                      0.0761 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9941 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: bimodal, Config: 8
+sim_IPC                      1.0529 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8429 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: bimodal, Config: 32
+sim_IPC                      1.0530 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8446 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: bimodal, Config: 128
+sim_IPC                      1.0530 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8446 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: bimodal, Config: 512
+sim_IPC                      1.0530 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8463 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: bimodal, Config: 2048
+sim_IPC                      1.0530 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8463 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gshare, Config: 1
+sim_IPC                      1.0526 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8356 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gshare, Config: 8
+sim_IPC                      1.0490 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8090 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gshare, Config: 32
+sim_IPC                      1.0560 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9781 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gshare, Config: 128
+sim_IPC                      1.0564 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9940 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gshare, Config: 512
+sim_IPC                      1.0564 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9957 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gshare, Config: 2048
+sim_IPC                      1.0564 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9957 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gag, Config: 1
+sim_IPC                      1.0526 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8356 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gag, Config: 8
+sim_IPC                      1.0525 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8352 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gag, Config: 32
+sim_IPC                      1.0557 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9326 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gag, Config: 128
+sim_IPC                      1.0557 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9365 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gag, Config: 512
+sim_IPC                      1.0557 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9364 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_gag, Config: 2048
+sim_IPC                      1.0555 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9352 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_pag, Config: 4-4
+sim_IPC                      1.0527 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8377 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_pag, Config: 8-16
+sim_IPC                      1.0556 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8945 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_pag, Config: 16-64
+sim_IPC                      1.0560 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9811 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_pag, Config: 32-256
+sim_IPC                      1.0560 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9862 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_pag, Config: 64-1024
+sim_IPC                      1.0562 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9897 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: applu, Predictor: 2lev_pag, Config: 32-2048
+sim_IPC                      1.0562 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9897 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: bimodal, Config: 8
+sim_IPC                      1.3935 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.7954 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: bimodal, Config: 32
+sim_IPC                      1.5258 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8730 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: bimodal, Config: 128
+sim_IPC                      1.5754 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8989 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: bimodal, Config: 512
+sim_IPC                      1.5763 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8994 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: bimodal, Config: 2048
+sim_IPC                      1.5764 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8994 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gshare, Config: 1
+sim_IPC                      1.3206 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7546 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gshare, Config: 8
+sim_IPC                      1.3427 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7588 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gshare, Config: 32
+sim_IPC                      1.4195 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8107 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gshare, Config: 128
+sim_IPC                      1.4949 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8532 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gshare, Config: 512
+sim_IPC                      1.5543 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8874 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gshare, Config: 2048
+sim_IPC                      1.5997 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9096 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gag, Config: 1
+sim_IPC                      1.3206 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7546 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gag, Config: 8
+sim_IPC                      1.3904 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7850 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gag, Config: 32
+sim_IPC                      1.4219 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8098 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gag, Config: 128
+sim_IPC                      1.4739 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8375 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gag, Config: 512
+sim_IPC                      1.4923 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8462 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_gag, Config: 2048
+sim_IPC                      1.5079 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8536 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_pag, Config: 4-4
+sim_IPC                      1.3201 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7532 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_pag, Config: 8-16
+sim_IPC                      1.4032 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8004 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_pag, Config: 16-64
+sim_IPC                      1.4957 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8592 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_pag, Config: 32-256
+sim_IPC                      1.5403 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8813 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_pag, Config: 64-1024
+sim_IPC                      1.5489 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8866 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: gzip, Predictor: 2lev_pag, Config: 32-2048
+sim_IPC                      1.5433 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8835 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: bimodal, Config: 8
+sim_IPC                      1.5220 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.7533 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: bimodal, Config: 32
+sim_IPC                      1.5951 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8296 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: bimodal, Config: 128
+sim_IPC                      1.7275 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.8848 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: bimodal, Config: 512
+sim_IPC                      1.9290 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9608 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: bimodal, Config: 2048
+sim_IPC                      1.9587 # instructions per cycle
+bpred_bimod.bpred_dir_rate    0.9661 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gshare, Config: 1
+sim_IPC                      1.4360 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7023 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gshare, Config: 8
+sim_IPC                      1.4743 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7214 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gshare, Config: 32
+sim_IPC                      1.4537 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7346 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gshare, Config: 128
+sim_IPC                      1.6246 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8339 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gshare, Config: 512
+sim_IPC                      1.8420 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9138 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gshare, Config: 2048
+sim_IPC                      1.9893 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9623 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gag, Config: 1
+sim_IPC                      1.4360 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7023 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gag, Config: 8
+sim_IPC                      1.5100 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7488 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gag, Config: 32
+sim_IPC                      1.5274 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7580 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gag, Config: 128
+sim_IPC                      1.5110 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7766 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gag, Config: 512
+sim_IPC                      1.5746 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8077 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_gag, Config: 2048
+sim_IPC                      1.6078 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8303 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_pag, Config: 4-4
+sim_IPC                      1.3979 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.6817 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_pag, Config: 8-16
+sim_IPC                      1.4903 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.7362 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_pag, Config: 16-64
+sim_IPC                      1.6081 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8126 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_pag, Config: 32-256
+sim_IPC                      1.7532 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.8789 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_pag, Config: 64-1024
+sim_IPC                      1.9217 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9350 # branch direction-prediction rate (i.e., all-hits/updates)
+
+Benchmark: mesa, Predictor: 2lev_pag, Config: 32-2048
+sim_IPC                      1.9179 # instructions per cycle
+bpred_2lev.bpred_dir_rate    0.9337 # branch direction-prediction rate (i.e., all-hits/updates)
