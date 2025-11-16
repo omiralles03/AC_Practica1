@@ -136,6 +136,14 @@ static int btb_nelt = 2;
 static int btb_config[2] =
   { /* nsets */512, /* assoc */4 };
 
+
+// Paràmetres pel predictor alloyed
+
+static int alloy_nelt = 5;
+static int alloy_config[5]=
+  { /*k*/ 8, /*c*/ 8, /*p*/ 1, /*g*/ 1, /*reservat*/ 0 };
+
+
 /* instruction decode B/W (insts/cycle) */
 static int ruu_decode_width;
 
@@ -689,6 +697,16 @@ sim_reg_options(struct opt_odb_t *odb)
 		 &bpred_spec_opt, /* default */NULL,
 		 /* print */TRUE, /* format */NULL);
 
+  // Configuració del predictor alloyed
+
+  opt_reg_int_list(odb, "-bpred:alloy",
+      "Alloyed predictor config "
+      "(<PaBHT size> <PHT size> <p_width> <g_width> <xor_flag>)",
+      alloy_config, alloy_nelt, &alloy_nelt,
+      /* default */alloy_config,
+      /* print */TRUE, /* format */NULL, /* !accrue */FALSE 
+      );
+
   /* decode options */
 
   opt_reg_int(odb, "-decode:width",
@@ -975,6 +993,27 @@ sim_check_options(struct opt_odb_t *odb,        /* options database */
 			  /* btb assoc */btb_config[1],
 			  /* ret-addr stack size */ras_size);
     }
+
+  else if (!mystricmp(pred_type, "alloy")){
+      // Predictor alloyed, comprovació d'arguments i crida a bpred_create
+      if (alloy_nelt != 5){
+          fatal("bad Alloyed predictor config (<PaBHT size> <PHT size> <p_width> <g_width> <xor_flag>)");
+      }
+      if (btb_nelt != 2){
+          fatal("bad btb config (<num_sets> <associativity>)");
+      }
+
+      pred = bpred_create(BPredAlloyed,
+        /* bimod table size*/0,
+        /* l1 size (2^k, PaBHT size)*/alloy_config[0],
+        /* l2 size (PHT size)*/alloy_config[1],
+        /* meta table size*/0,
+        /* shift_width (p)*/alloy_config[2],
+        /* xor (g)*/alloy_config[3],
+        /* btb sets */btb_config[0],
+        /* btb assoc */btb_config[1],
+        /* ret-addr stack size */ras_size);
+  }
   else
     fatal("cannot parse predictor type `%s'", pred_type);
 

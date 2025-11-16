@@ -104,6 +104,12 @@ bpred_create(enum bpred_class class,	/* type of predictor to create */
 
     break;
 
+  // Afegim el nou cas per predictor alloyed 
+  case BPredAlloyed:
+    pred->dirpred.alloyed=
+      bpred_dir_create(class, l1size, l2size, shift_width, xor);
+    break;
+
   case BPred2bit:
     pred->dirpred.bimod = 
       bpred_dir_create(class, bimod_size, 0, 0, 0);
@@ -122,6 +128,7 @@ bpred_create(enum bpred_class class,	/* type of predictor to create */
   case BPredComb:
   case BPred2Level:
   case BPred2bit:
+  case BPredAlloyed:
     {
       int i;
 

@@ -104,6 +104,7 @@ enum bpred_class {
   BPred2bit,			/* 2-bit saturating cntr pred (dir mapped) */
   BPredTaken,			/* static predict taken */
   BPredNotTaken,		/* static predict not taken */
+  BPredAlloyed,		/* Predictori alloyed per la fase 2.*/
   BPred_NUM
 };
 
@@ -124,12 +125,17 @@ struct bpred_dir_t {
       unsigned char *table;	/* prediction state table */
     } bimod;
     struct {
-      int l1size;		/* level-1 size, number of history regs */
-      int l2size;		/* level-2 size, number of pred states */
-      int shift_width;		/* amount of history in level-1 shift regs */
-      int xor;			/* history xor address flag */
-      int *shiftregs;		/* level-1 history table */
-      unsigned char *l2table;	/* level-2 prediction state table */
+      int l1size;		/* level-1 size, number of history regs. En Alloyed, 2^k (mida PaBHT). */
+      int l2size;		/* level-2 size, number of pred states. En Alloyed, 2^c (mida PHT) */
+      int shift_width;		/* amount of history in level-1 shift regs. En Alloyed, p (ample PaBHT) */
+      int xor;			/* history xor address flag. En Alloyed, g. */
+      int *shiftregs;		/* level-1 history table. En Alloyed, PaBHT. */
+      unsigned char *l2table;	/* level-2 prediction state table. En Alloyed, PHT. */
+
+      // Nous camps per predictor alloyed
+      int gbhr;    /* El global BHR (registre de g bits)*/
+      int k_width;  /* Ample 'k' (log2(l1size)) */
+      int i_width;  /* Ample 'i' (c - g - p) */
     } two;
   } config;
 };
@@ -141,6 +147,7 @@ struct bpred_t {
     struct bpred_dir_t *bimod;	  /* first direction predictor */
     struct bpred_dir_t *twolev;	  /* second direction predictor */
     struct bpred_dir_t *meta;	  /* meta predictor */
+    struct bpred_dir_t *alloyed; /* Punter pel predictor alloyed */
   } dirpred;
 
   struct {
