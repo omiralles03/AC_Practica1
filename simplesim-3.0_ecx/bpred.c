@@ -258,6 +258,75 @@ bpred_dir_create (
 
     break;
 
+
+  case BPredAlloyed:
+    {
+      int c_bits;
+
+      if (!l1size || (l1size & (l1size-1)) != 0){
+        fatal("level-1 size (PaBHT), `%d', must be non-zero and a power of two", l1size);
+        pred_dir->config.two.l1size = l1size; // 2^k (mida PaBHT)
+      }
+
+      if (!l2size || (l2size & (l2size-1)) != 0){
+        fatal("level-2 size (PHT), `%d', must be non-zero and a power of two", l2size);
+        pred_dir->config.two.l2size = l2size; // 2^c (mida PHT)
+      }
+
+      if (!shift_width || shift_width > 30){
+        fatal("PaBHT width (p), `%d', must be non-zero and positive", shift_width);
+        pred_dir->config.two.shift_width = shift_width; // p (ample PaBHT)
+      }
+
+      if (!xor || xor > 30){
+        fatal("GHBR width (g), '%d', must be non-zero and positive", xor);
+        pred_dir->config.two.xor = xor; // g
+      }
+
+      // Calculem k (mida PaBHT) i i (c - g - p).
+
+      pred_dir->config.two.k_width = log_base2(l1size); // k
+      c_bits = log_base2(l2size); // c
+      pred_dir->config.two.i_width = c_bits - shift_width - xor; // i = c - g - p
+
+      if (pred_dir->config.two.i_width < 1){
+        fatal("i width (%d) is less than 1 bit", pred_dir->config.two.i_width);
+      }
+
+      // Reservem memòria per al PaBHT (reutilitzant shiftregs) i per al PHT (reutilitzant l2table).
+
+      pred_dir->config.two.shiftregs = calloc(l1size, sizeof(int));
+      if (!pred_dir->config.two.shiftregs)
+        fatal("cannot allocate PaBHT (shift register) table");
+
+      pred_dir->config.two.l2table = calloc(l2size, sizeof(unsigned char));
+      if (!pred_dir->config.two.l2table)
+        fatal("cannot allocate PHT (level-2) table");
+
+      // Reservem memòria per al GBHR.
+      pred_dir->config.two.gbhr = calloc(1, sizeof(int));
+      if (!pred_dir->config.two.gbhr)
+        fatal("cannot allocate GBHR register");
+
+      // Inicialitzem tot a 1 (prediccio inicialment a Taken).
+
+      pred_dir->config.two.gbhr = (1 << pred_dir->config.two.xor) - 1; // GBHR inicialitzat a 1
+
+      // PaBHT inicialitzat a 1
+      for (cnt = 0; cnt < l1size; cnt++)
+        {
+          pred_dir->config.two.shiftregs[cnt] = (1 << pred_dir->config.two.shift_width) - 1;
+        }
+
+      // PHT tot a 11 (Strongly Taken)
+      for (cnt = 0; cnt < l2size; cnt++)
+        {
+          pred_dir->config.two.l2table[cnt] = 3;
+        }
+
+      break;
+    }
+
   case BPredTaken:
   case BPredNotTaken:
     /* no other state */
@@ -288,6 +357,19 @@ bpred_dir_config(
   case BPred2bit:
     fprintf(stream, "pred_dir: %s: 2-bit: %d entries, direct-mapped\n",
       name, pred_dir->config.bimod.size);
+    break;
+
+  case BPredAlloyed:
+    fprintf(stream,
+      "pred_dir: %s: Alloyed: PaBHT: %d entries, %d bits/ent (k=%d, p=%d); "
+      "PHT: %d entries (c=%d); GBHR: %d bits (g=%d); PC bits (i=%d)\n",
+      name, 
+      pred_dir->config.two.l1size, pred_dir->config.two.shift_width,
+      pred_dir->config.two.k_width, pred_dir->config.two.shift_width,
+      pred_dir->config.two.l2size, 
+      (pred_dir->config.two.k_width + pred_dir->config.two.i_width + pred_dir->config.two.xor),
+      pred_dir->config.two.xor, pred_dir->config.two.xor,
+      pred_dir->config.two.i_width);
     break;
 
   case BPredTaken:
@@ -332,6 +414,14 @@ bpred_config(struct bpred_t *pred,	/* branch predictor instance */
     fprintf(stream, "ret_stack: %d entries", pred->retstack.size);
     break;
 
+  // Afegim el nou cas per predictor alloyed
+  case BPredAlloyed:
+    bpred_dir_config (pred->dirpred.alloyed, "alloy", stream);
+    fprintf(stream, "btb: %d sets x %d associativity", 
+            pred->btb.sets, pred->btb.assoc);
+    fprintf(stream, "ret_stack: %d entries", pred->retstack.size);
+    break;
+  
   case BPredTaken:
     bpred_dir_config (pred->dirpred.bimod, "taken", stream);
     break;
@@ -379,6 +469,9 @@ bpred_reg_stats(struct bpred_t *pred,	/* branch predictor instance */
       break;
     case BPredNotTaken:
       name = "bpred_nottaken";
+      break;
+    case BPredAlloyed:        // Afegim el nou cas per predictor alloyed
+      name = "bpred_alloyed";
       break;
     default:
       panic("bogus branch predictor class");
@@ -540,6 +633,40 @@ bpred_dir_lookup(struct bpred_dir_t *pred_dir,	/* branch dir predictor inst */
     case BPred2bit:
       p = &pred_dir->config.bimod.table[BIMOD_HASH(pred_dir, baddr)];
       break;
+
+
+    case BPredAlloyed:
+      {
+        int k, p, g, i, c_size;
+        int pabht_index, pht_index;
+        int hist_local, hist_global, bits_pc;
+
+        // Agafem els paràmetres de les variables de configuració.
+        k = pred_dir->config.two.k_width;
+        p = pred_dir->config.two.shift_width;
+        g = pred_dir->config.two.xor;
+        i = pred_dir->config.two.i_width;
+        c_size = pred_dir->config.two.l2size;
+
+        // Consultar PaBHT 
+        pabht_index = (baddr >> MD_BR_SHIFT) & (pred_dir->config.two.l1size - 1);
+        hist_local = pred_dir->config.two.shiftregs[pabht_index] & ((1 << p) - 1);
+
+        // Consultar GBHR per obtenir l'historial global (g bits)-
+        hist_global = pred_dir->config.two.gbhr & ((1 << g) - 1);
+
+        // Obtenir els bits de l'adreça PC (i bits).
+        bits_pc = (baddr >> (MD_BR_SHIFT + k)) & ((1 << i) - 1);
+
+        // Concatenem les tres parts per obtenir l'índex del PHT (c bits).
+        pht_index = (bits_pc << (g+p) | (hist_global << p) | hist_local);
+        pht_index = pht_index & (c_size - 1); // Assegurar que l'índex està dins la mida del PHT.
+
+        // Obtenim el punter a l'entrada del PHT.
+        p = &pred_dir->config.two.l2table[pht_index];
+
+        break;
+      }
     case BPredTaken:
     case BPredNotTaken:
       break;
@@ -623,6 +750,17 @@ bpred_lookup(struct bpred_t *pred,	/* branch predictor instance */
 	    bpred_dir_lookup (pred->dirpred.bimod, baddr);
 	}
       break;
+
+    // Afegim el nou cas per predictor alloyed
+    case BPredAlloyed:
+      if ((MD_OP_FLAGS(op) & (F_CTRL|F_UNCOND)) != (F_CTRL|F_UNCOND))
+        {
+          dir_update_ptr->pdir1 =
+            bpred_dir_lookup (pred->dirpred.alloyed, baddr);
+        }
+      break;
+
+    
     case BPredTaken:
       return btarget;
     case BPredNotTaken:
@@ -834,18 +972,41 @@ bpred_update(struct bpred_t *pred,	/* branch predictor instance */
   /* update L1 table if appropriate */
   /* L1 table is updated unconditionally for combining predictor too */
   if ((MD_OP_FLAGS(op) & (F_CTRL|F_UNCOND)) != (F_CTRL|F_UNCOND) &&
-      (pred->class == BPred2Level || pred->class == BPredComb))
+    (pred->class == BPred2Level || pred->class == BPredComb || pred->class == BPredAlloyed))
     {
       int l1index, shift_reg;
       
-      /* also update appropriate L1 history register */
-      l1index =
-	(baddr >> MD_BR_SHIFT) & (pred->dirpred.twolev->config.two.l1size - 1);
-      shift_reg =
-	(pred->dirpred.twolev->config.two.shiftregs[l1index] << 1) | (!!taken);
-      pred->dirpred.twolev->config.two.shiftregs[l1index] =
-	shift_reg & ((1 << pred->dirpred.twolev->config.two.shift_width) - 1);
+    switch (pred->class) {
+      case BPred2Level:
+      case BPredComb:
+            l1index =
+        (baddr >> MD_BR_SHIFT) & (pred->dirpred.twolev->config.two.l1size - 1);
+            shift_reg =
+        (pred->dirpred.twolev->config.two.shiftregs[l1index] << 1) | (!!taken);
+            pred->dirpred.twolev->config.two.shiftregs[l1index] =
+        shift_reg & ((1 << pred->dirpred.twolev->config.two.shift_width) - 1);
+        break;
+
+      case BPredAlloyed:
+        {
+          // Actualitzem PaBHT
+          struct bpred_dir_t *alloy_pred = pred->dirpred.alloyed;
+          l1index = (baddr >> MD_BR_SHIFT) & (alloy_pred->config.two.l1size - 1);
+          shift_reg = (alloy_pred->config.two.shiftregs[l1index] << 1) | (!!taken);
+          alloy_pred->config.two.shiftregs[l1index] = 
+            shift_reg & ((1 << alloy_pred->config.two.shift_width) - 1);
+
+          // Actualitzem GBHR
+          shift_reg = (alloy_pred->config.two.gbhr << 1) | (!!taken);
+          alloy_pred->config.two.gbhr =
+            shift_reg & ((1 << alloy_pred->config.two.xor) - 1);
+        }
+        break;
+
+      default:
+        break;
     }
+  }
 
   /* find BTB entry if it's a taken branch (don't allocate for non-taken) */
   if (taken)
