@@ -133,7 +133,7 @@ struct bpred_dir_t {
       unsigned char *l2table;	/* level-2 prediction state table. En Alloyed, PHT. */
 
       // Nous camps per predictor alloyed
-      int gbhr;    /* El global BHR (registre de g bits)*/
+      int *gbhr;    /* El global BHR (registre de g bits)*/
       int k_width;  /* Ample 'k' (log2(l1size)) */
       int i_width;  /* Ample 'i' (c - g - p) */
     } two;
