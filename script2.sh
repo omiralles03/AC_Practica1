@@ -40,6 +40,7 @@ CONFIGURATIONS["bimodal"]="8 32 128 512 2048"
 CONFIGURATIONS["2lev_gshare"]="1 8 32 128 512 2048"
 CONFIGURATIONS["2lev_gag"]="1 8 32 128 512 2048"
 CONFIGURATIONS["2lev_pag"]="4-4 8-16 16-64 32-256 64-1024 32-2048"
+CONFIGURATIONS["alloyed"]="8_8_1_1_0 16_32_2_2_0 32_128_2_3_0 64_512_3_3_0 128_2048_4_4_0 64_4096_4_4_0"
 
 
 timer ()
@@ -76,6 +77,7 @@ extract_results() {
         "nottaken") predictor_prefix="bpred_nottaken";;
         "taken") predictor_prefix="bpred_taken";;
         "perfect") predictor_prefix="";;  # Perfect no tiene dir_rate porque es 100%
+        "alloyed") predictor_prefix="bpred_alloyed";;
     esac
 
     # Extraer dir_rate si el predictor no es perfecto
@@ -142,8 +144,8 @@ execute_simulation_dynamic() {
     local OUTPUT_DIR_BASE="$BASE_DIR/Results"
 
     # Simulación para cada predictor dinámico con sus configuraciones específicas
-    for PRED in "bimodal" "2lev_gshare" "2lev_gag" "2lev_pag"; do
-    # for PRED in "2lev_gshare" "2lev_gag" "2lev_pag"; do
+    # for PRED in "bimodal" "2lev_gshare" "2lev_gag" "2lev_pag"; do
+    for PRED in "alloyed"; do
         local CONFIG_VALUES="${CONFIGURATIONS[$PRED]}"
 
         for CONFIG in $CONFIG_VALUES; do
@@ -151,6 +153,14 @@ execute_simulation_dynamic() {
             
             # Construir la línea de comandos de acuerdo al tipo de predictor y configuración
             case $PRED in
+                "alloyed")
+                    # Reemplacem '_' pel separador d'espais ' ' per al paràmetre de la comanda
+                    CONFIG_PARAMS=$(echo "$CONFIG" | tr '_' ' ')
+                    
+                    local SIM_COMMAND="$SIMULATOR -fastfwd $FASTFWD -max:inst $MAX_INST \
+                    -mem:width $WIDTH -mem:lat $CYCLES $CONSECUTIVE \
+                    -bpred alloy -bpred:alloy $CONFIG_PARAMS -redir:sim $OUTPUT_DIR $EXE $COMMAND"
+                    ;;
                 "bimodal")
                     local SIM_COMMAND="$SIMULATOR -fastfwd $FASTFWD -max:inst $MAX_INST \
                     -mem:width $WIDTH -mem:lat $CYCLES $CONSECUTIVE \
@@ -202,9 +212,9 @@ execute_simulation_dynamic() {
 }
 
 
-for BENCH in "${!BENCHMARKS[@]}"; do
-    execute_simulation_static "$BENCH"
-done
+# for BENCH in "${!BENCHMARKS[@]}"; do
+#     execute_simulation_static "$BENCH"
+# done
 for BENCH in "${!BENCHMARKS[@]}"; do
     execute_simulation_dynamic "$BENCH"
 done
